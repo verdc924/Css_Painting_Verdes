@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Painting recreation on CSS</title>
+	<style>
+    body {
+      padding: 30px;
+
+    }
+
+    /* The square holds every shape. Percentages make it resize together. */
+    .painting {
+      --cream: #FFFFFF;
+      --green: olive;
+      --red: darkred;
+      --blue: darkblue;
+      position: relative;
+
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Each div is a flat shape layered over the previous one. */
+    .painting > div { position: absolute; }
+
+    .left-green {
+      inset: 0;
+      background: olive;
+      clip-path: polygon(0 0, 40% 0, 40% 40%, 67% 40%, 67% 100%, 0 100%);
+    }
+
+    .left-red {
+      left: 5%;
+      top: 5%;
+      width: 62%;
+      height: 87%;
+      background: darkred;
+      border-top-left-radius: 18% 13%;
+      clip-path: polygon(0 0, 56.45% 0, 56.45% 40.23%, 100% 40.23%, 100% 100%, 0 100%);
+    }
+
+    .right-red {
+      left: 42%;
+      top: 0;
+      width: 58%;
+      height: 100%;
+      background: darkred;
+      border-top-right-radius: 38% 23%;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 48.28% 100%, 48.28% 40%, 0 40%);
+    }
+
+    .right-blue {
+      left: 42%;
+      top: 5%;
+      width: 48%;
+      height: 71%;
+      background: darkblue;
+      border-top-right-radius: 22% 16%;
+      clip-path: polygon(0 0, 52% 0, 52% 11%, 100% 11%, 100% 100%, 58.33% 100%, 58.33% 49.3%, 0 49.3%);
+    }
+
+    /* This strip makes the little step in the blue shape's top edge. */
+    .red-step {
+      left: 67%;
+      top: 5%;
+      width: 23%;
+      height: 8%;
+      background: darkred;
+    }
+
+    .blue-curve {
+      left: 30%;
+      top: 40%;
+      width: 37%;
+      height: 36%;
+      background: darkblue;
+      border-bottom-left-radius: 70% 70%;
+    }
+
+    .green-corner {
+      left: 42%;
+      top: 34%;
+      width: 33%;
+      height: 33%;
+      background: var(--green);
+      border-top-right-radius: 18%;
+    }
+
+    /* A cream shape creates the open middle and the inner blue curve. */
+    .opening {
+      left: 40%;
+      top: 40%;
+      width: 29%;
+      height: 26%;
+      background: white;
+      border-bottom-left-radius: 60% 60%;
+    }
+
+    /* The two narrow spaces separate the painting's panels. */
+    .top-gap {
+      left: 40%;
+      width: 2%;
+      height: 41%;
+    }
+
+    .bottom-gap {
+      left: 67%;
+      top: 66%;
+      width: 3%;
+      height: 34%;
+      background: var(--cream);
+    }
+  </style>
+</head>
+<body>
+  <main class="painting">
+    <div class="left-green"></div>
+    <div class="left-red"></div>
+    <div class="right-red"></div>
+    <div class="right-blue"></div>
+    <div class="red-step"></div>
+    <div class="blue-curve"></div>
+    <div class="green-corner"></div>
+    <div class="opening"></div>
+    <div class="top-gap"></div>
+    <div class="bottom-gap"></div>
+  </main>
+</body>
+</html>
